@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>아버지가방에들어가신다</p>
+    <input id="input-tag" type="text">
+    <span class="answer-place">다르다</span>
+    <script>
+        const answer = '아버지가방에들어가신다'
+        const inputTag = document.getElementById('input-tag');
+        const answerPlace = document.querySelector('.answer-place');
+        
+        console.log(inputTag);
+
+        console.log(answerPlace);
+        inputTag.addEventListener("change", ()=>{
+            console.log(inputTag.value);
+           
+            answerPlace.innerText = inputTag.value === answer ? '맞다' : '아니다';
+
+        })
+
+    </script>
+</body>
+</html>
