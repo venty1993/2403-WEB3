@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 연산자 연산하는 문자
+
+        // 산술 연산자
+            // + : 더하기
+            // - : 빼기
+            // * : 곱하기
+            // / : 나누기
+
+        // 개발용 산술 연산자
+            // % : 나머지
+            // ++(단항) : 1 증가
+            // --(단항) : 1 감소
+        
+        // 대입 연산자
+            // = : 오른쪽 항의 값을 왼쪽 항에 대입한다
+            // 나이 = 32
+                // 위처럼 쓰면 32(오른쪽항)이 나이(왼쪽항)에 대입된다.
+                // 그러면 나이 라는 변수는 32 라는 값을 갖게된다.
+
+        var 나이;
+        나이 = 99;
+        console.log(나이); // 나이 라는 문자가 아닌 32 가 출력된다.
+        console.log('나이') // 나이 라는 문자를 그대로 출력하고싶다면 따옴표 사용
+
+        // 비교 연산자 : 두 항을 비교해 질문이 맞으면 True , 틀리면 False
+            // A > B : A가 B를 초과하는지 질문
+            // A < B : A가 B 미만인지 질문
+            // A >= B : A가 B 이상인지 질문
+            // A <= B : A가 B 이하인지 질문
+            // == : 값이 같은지 질문 (자료형은 고려하지 않는다)
+                var ask = 1 == '1';
+                var case1 = 1+1; // 정상적으로 2가 계산됨
+                var case2 = '1' + '1'; //문자끼리의 덧셈이므로 2가 아닌 '11'이 되어버림
+
+                console.log(`case1 : ${case1}, case2 : ${case2}`)
+                console.log(case1);
+                console.log(case2);
+
+                console.log(ask);
+
+                // == 연산자가 문제인 이유
+
+                // false : 거짓
+                // 1 = true, 0 = false
+                // [] : false
+
+                // 0 == '0' => true
+                // 0 == [] => true
+                // '0' == [] => false
+
+            // === : 값과 자료형이 모두 일치하는지 질문
+                // 0 === '0' => false
+            
+
+            // != : 자료형은 신경쓰지 않고 값이 다른지만 질문
+                console.log(`1 != '1' = ${1 != '1'}`) 
+            // !== : 자료형까지 포함해 값이 다른지 질문
+                console.log(`1 !== '1' = ${1 !== '1'}`)
+
+            
+
+        // 연결 연산자
+            // +(문자일때만) : 두 문자를 연결하는 연산자
+                // 기존 사용방법
+                    console.log('제 나이는 ' + 나이 +'살입니다')
+                // ES6, 템플릿 리터럴, 따옴표 대신 백틱(`)을 이용해야한다.
+                    console.log(`제 나이는 ${나이}살 입니다.`)
+
+        // 논리 연산자
+            // && : AND 연산자, 양쪽 항이 True면 값도 True, 하나라도 false면 false
+                // true && true => true
+                // 지원자나이 < 사장 && 성별 === '남자'
+            // || : OR 연산자, 양쪽 한중 한개라도 True이면 True, 둘 모두 False일때만 False
+            // !(단항) : NOT연산자 
+                var 성별 = true;
+                console.log(`성별 : ${!성별}`) //false !true
+                console.log(`사실은 : ${성별}`) // true
+
+                var 숫자 = 5;
+                console.log(`숫자는 ${숫자+5}`); //10
+                console.log(`사실은 ${숫자}`) // 5
+
+            // 삼항연산자
+                // 조건 ? 참일때 : 거짓일때 ;
+                // 엑셀 if문과 모양이 똑같다. =if(조건식,true,false);
+                console.log(`당신은 ${나이>=20?'성인':'미성년자'}입니다.`)
+
+        
+
+
+
+    </script>
+</body>
+</html>
