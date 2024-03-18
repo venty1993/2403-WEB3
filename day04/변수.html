@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 초창기 자바스크립트는 쉽고 빠르게 작성하기 위해서 의도적으로 얼렁뚱땅 언어로 만들었다.
+        var 현재년도 = 2024;
+        var 출생년도 = 1993;
+
+        // 개발을 하다보면 이것저것 시도해보면서 바꾸면 안되는값을 바꾸는 상황이 생길수도 있다.
+        출생년도 = 2024;
+        
+        console.log(`나이는 ${현재년도 - 출생년도 +1}세 입니다.`)
+        // 1세 로 나오게 된다.
+
+        // 하지만 웹 프론트 개발영역이 넓고 깊어짐에 따라 var만으로는 개발이 힘들어졌다.
+        
+        // ES6에서 등장한 상수와 변수 선언
+        const 상수 = 1993;
+        let 변수;
+        변수 = 2024;
+
+        // 변수값에는 얼마든지 접근해서 변경 가능
+        변수 = 변수 + 1;
+
+        console.log(변수);
+
+        // 상수는 초기값에서 변경 불가
+        상수 = 상수 + 1 ;
+
+
+    </script>
+</body>
+</html>

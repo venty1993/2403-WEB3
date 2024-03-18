@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 같은 이름의 변수를 여러번 생성하는것이 가능 해야할까?
+        var 현재년도 = 2024;
+        var 현재년도 = 2025;
+
+        console.log(현재년도)
+
+
+        // 호이스팅된 형태로 바꿔서 써보면
+        var 현재년도;
+        
+        현재년도 = 2024;
+        현재년도 = 2025;
+
+        console.log(현재년도)
+
+        // let으로 똑같은 행동을 하면?
+        // 아래와 같이 작성하면 vsc 내에서 잘못되었다고 이미 알려준다.
+        // let 나이 = 32;
+        // let 나이 = 33;
+
+        console.log(`이름 : ${이름}`)
+
+        var 이름 = '홍길동'
+
+
+        console.log(공격력)
+        let 공격력 = 100;    
+        
+    </script>
+</body>
+</html>

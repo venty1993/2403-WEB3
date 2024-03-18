@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let sum;
+
+        sum = 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10;
+        console.log(sum);
+        sum = 0 ;
+
+        sum = sum + 1;
+        sum = sum + 2;
+        sum = sum + 3;
+        sum = sum + 4;
+        sum = sum + 5;
+        sum = sum + 6;
+        sum = sum + 7;
+        sum = sum + 8;
+        sum = sum + 9;
+        sum = sum + 10;
+
+        console.log(sum);
+
+        sum=0;
+
+
+        // 4를 100번 더해주는 반복문 (사실4*100하면 되긴 하지만..)
+
+        //for(초기값선언, 반복범위설정, 증감식){
+        //      반복실행될 영역 
+        // } 
+        for(let i = 0 ; i < 100 ; i ++){
+            sum = sum + 4;
+        }
+
+        console.log(sum)
+
+        sum = 0 ;
+
+        for(let i = 1 ; i <= 10; i ++) {
+            sum = sum + i;
+        }
+
+        console.log(sum);
+    </script>
+</body>
+</html>
