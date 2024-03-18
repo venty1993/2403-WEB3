@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 콘솔에 구구단 7단을 출력해주세요 -->
+
+    <!-- ex)
+        7 x 1 = 7
+        7 x 2 = 14
+        .
+        .
+        .
+        .
+        7 x 9 = 63
+    -->
+    <script>
+        // console.log(`7 x 1 = 7`)
+        // console.log(`7 x 2 = 14`)
+        // console.log(`7 x 3 = 14`)
+        // console.log(`7 x 4 = 14`)
+        // console.log(`7 x 5 = 14`)
+        // console.log(`7 x 6 = 14`)
+        // console.log(`7 x 7 = 14`)
+        // console.log(`7 x 8 = 14`)
+        // console.log(`7 x 9 = 63`)
+
+        // console.log(`7 x {1부터 9까지} = {7*1부터 7*9까지}`)
+
+        for(let i = 1 ; i <= 9; i++){
+            console.log(`7 x ${i} = ${7*i}`)
+        }
+
+        // 2~4단
+        for(let i = 1 ; i <= 9; i++){
+            console.log(`2 x ${i} = ${2*i}`)
+        }
+        for(let i = 1 ; i <= 9; i++){
+            console.log(`3 x ${i} = ${3*i}`)
+        }
+        for(let i = 1 ; i <= 9; i++){
+            console.log(`4 x ${i} = ${4*i}`)
+        }
+        
+
+        // 어? 이 모양새는...
+        for(let dan = 2 ; dan <= 9 ; dan ++){
+            for(let i = 1 ; i <= 9; i++){
+                console.log(`${dan} x ${i} = ${dan*i}`)
+            }
+
+        }
+
+        // 문서에 출력
+        for(let dan = 2 ; dan <= 9 ; dan ++){
+
+
+
+
+            document.write(`<h2>${dan}단</h2>`)
+            for(let i = 1 ; i <= 9; i++){
+                document.write(`${dan} x ${i} = ${dan*i}`)
+                document.write('<br>')
+            }
+        }
+
+    </script>
+</body>
+</html>
