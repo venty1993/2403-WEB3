@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gugu-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .dan-container {
+            border: 1px solid #222;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        document.write(`<div class='container'>`)
+        document.write(`<h1>구구단</h1>`)
+        document.write(`<div class='gugu-container'>`)
+        for(let dan = 2 ; dan <= 9 ; dan ++){
+            document.write(`<div class='dan-container'>`)
+            document.write(`<h2>${dan}단</h2>`)
+            for(let i = 1 ; i <= 9; i++){
+                document.write(`<p>${dan} x ${i} = ${dan*i}</p>`)
+            }
+            document.write('</div>')
+        }
+        document.write(`</div>`)
+        document.write(`</div>`)
+
+
+
+
+
+    </script>
+</body>
+</html>
