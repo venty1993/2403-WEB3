@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function star() {
+            document.write('&nbsp;^&nbsp;');
+        }
+        function 공백() {
+            document.write('&nbsp;&nbsp;&nbsp;');
+        }
+        function enter() {
+            document.write('<br>');
+        }
+
+
+        enter();
+
+        for(let i = 0 ; i < 5 ; i ++) {
+            for(let j = 0 ; j <= i ; j ++) {
+                star();
+            }
+            enter();
+        }
+
+        덧셈만하는계산기(1,2)
+        덧셈만하는계산기(3,4)
+
+        function 덧셈만하는계산기(숫자1, 숫자2) {
+            return 숫자1+숫자2;
+        }
+
+        // console.log(숫자1)
+        // 매개변수는 함수 내부에서만 접근 가능해 외부에서는 사용할수 없다.
+
+        let 결과 = 덧셈만하는계산기(1,2)
+
+
+        // 함수에는 매개변수와 return의 개념이 있다.
+        // star() 같은 함수는 매개변수와 return이 전부 생략된 형태
+        // 외부에서 값을 받아서 써야하는경우 매개변수를 사용하면 되고,
+        // 함수 내에서 계산한 값을 외부로 가져가려면 return을 사용하면 된다.
+
+
+    
+
+    </script>
+</body>
+</html>

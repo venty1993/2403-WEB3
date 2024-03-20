@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    반복될것 : *
+    i=0 : (j=0~4) * * * * * (엔터)
+    i=1 : (j=0~4) * * * * * (엔터)
+    i=2 : (j=0~4) * * * * * (엔터)
+    i=3 : (j=0~4) * * * * * (엔터)
+    i=4 : (j=0~4) * * * * * (엔터)
+
+    5 x 5
+    5행 5열
+
+    반복될것 : *
+    i= 0 : (j = 0)              *
+    i= 1 : (j = 0 ,1)           * *
+    i= 2 : (j = 0 ,1 ,2)        * * *
+    i= 3 : (j = 0 ,1 ,2 ,3)     * * * *
+    i= 4 : (j = 0, 1, 2, 3, 4)  * * * * *
+
+
+
+    i=0 j= 5-i =5      * * * * *
+    i=1 j= 5-i =4      * * * *
+    i=2 j= 5-i =3      * * *
+    i=3 j= 5-i =2      * *
+    i=4 j= 5-i =1      *
+
+
+    <br>
+    <br>
+
+    i=0     * * * * *  공백 0, 별 5
+    i=1       * * * *  공백 1, 별 4
+    i=2         * * *  공백 2, 별 3
+    i=3           * *  공백 3, 별 2
+    i=4             *  공백 4, 별 1
+
+
+
+            *
+          * *
+        * * *
+      * * * *
+    * * * * *
+
+
+    <script>
+        document.write("&nbsp;*&nbsp;")//별
+        document.write("&nbsp;&nbsp;&nbsp;")//공백
+        document.write("&nbsp;*&nbsp;")//별
+        document.write("&nbsp;&nbsp;&nbsp;")//공백
+        document.write("&nbsp;*&nbsp;")//별
+        document.write("&nbsp;&nbsp;&nbsp;")//공백
+
+
+
+        for(let i = 0 ; i < 5 ; i ++) {
+            for(let j = 0 ; j < 5-i ; j ++) {
+                document.write("&nbsp;*&nbsp;");
+            }
+            document.write("<br>")
+        }
+
+        for(let i = 0 ; i < 5 ; i ++) {
+            //공백을 찍어줄 반복문
+            for(let j = 0 ; j < i ; j ++) {
+                document.write("&nbsp;&nbsp;&nbsp;");
+            }
+            
+            // 별을 찍어줄 반복문
+            for(let j = 0 ; j < 5-i ; j ++) {
+                document.write("&nbsp;*&nbsp;");
+            }
+            document.write("<br>")
+        }
+
+        for(let i = 0 ; i < 5 ; i ++) {
+            //공백을 찍어줄 반복문
+            for(let j = 0 ; j < 4-i ; j ++) {
+                document.write("&nbsp;&nbsp;&nbsp;");
+            }
+            
+            // 별을 찍어줄 반복문
+            for(let j = 0 ; j <= i ; j ++) {
+                document.write("&nbsp;*&nbsp;");
+            }
+            document.write("<br>")
+        }
+    </script>
+
+</body>
+</html>
