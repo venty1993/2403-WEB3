@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const user1 = '김철수'
+        const user2 = '박영희'
+        // ...
+        // ...
+        const user10000 = '홍길동'
+
+        console.log(user1)
+        console.log(user2)
+        // ...
+        // ...
+        console.log(user10000);
+
+        // 위처럼 서로 비슷하지만 다른 값들을 각각의 변수에 담으면 재사용이 굉장히 비효율적이 된다.
+        // 비슷한 친구들은 하나의 보따리로 묶어주는것이 효율적!
+
+        const users = ['김철수', '박영희', '홍길동'];
+
+        console.log(users);
+
+        // Array(3)
+        // 0:"김철수"
+        // 1:"박영희"
+        // 2:"홍길동"
+        // length:3
+
+        console.log(users[0]);
+        // users 배열의 0번째 index를 가진 '김철수' 가 출력된다.
+
+        // const 상수 = 1;
+        // 상수++;
+        // 한번 선언된 상수는 변경이 불가하다.
+
+        // 배열같은경우는 상황이 조금 다른데,
+        // 배열에 새로운 값이 들어오고 나가는것은 예를들자면
+        // 301호에 사람들이 들어왔다 나갔다 하는것과 비슷하다.
+        // 사람이 1000명 들어왔다 나가도 301호는 그대로 301호이므로 상수 선언이 문제가 되지 않는다.
+
+        console.log(users.length);
+        users.push('김범수')
+        users.push('나얼')
+        users.push('박효신')
+
+        console.log(users); //[0:"김철수" 1:"박영희" 2: "홍길동" 3:"김범수"4:"나얼"5:"박효신"]
+
+        // 배열은 놔두고 값만 초기화
+        users[2] = ''
+        console.log(users) //[0:"김철수" 1:"박영희" 2: "" 3:"김범수"4:"나얼"5:"박효신"]
+        
+        // 인덱스 2번부터 시작해 1개의 요소를 지우겠다는 뜻
+        users.splice(2,1)
+
+        console.log(users); //[0:"김철수" 1:"박영희"  2:"김범수" 3:"나얼" 4:"박효신"]
+
+        // 인덱스 1번부터 시작해 0개의 요소를 지우고 '무언가'를 배열에 추가하겠다는 뜻
+        users.splice(1,0,'무언가')
+        
+        console.log(users) //[0:"김철수" 1: "무언가" 2: "박영희" 3:"김범수"4:"나얼"5:"박효신"]
+
+        const 나온사람 = users.pop();
+
+        console.log(나온사람);
+        console.log(users);
+
+
+
+        
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
