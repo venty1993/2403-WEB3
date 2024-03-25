@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        안녕하세요
+    </div>
+
+    <script>
+        const 박스 = document.querySelector('.box');
+
+        박스.style.color = 'red';
+        박스.style.display= 'flex';
+        // 개체의 스타일을 지정해주는 방식
+        // 속성은 태그에 인라인 스타일 형태로 들어간다.
+
+        박스.style.fontSize = '12px'
+        // 속성 이름에 하이픈(-)이 들어있는 경우, js스크립트에서 - 기호는 빼기 연산자 이기때문에
+        // 카멜케이스를 따라 font-size -> fontSize , background-color -> backgroundColor 와 같은 형태로 작성해줘야 한다.
+
+        박스.style.transform = 'translateX(-3000px)'
+        // 값이 복잡할때 오타가 있다면 아예 적용이 되지 않는다.
+        // 개발자도구에서 속성을 작성하고 복사해오면 문제 발생 빈도가 줄어든다.
+
+
+
+        console.log(박스.classList);
+        // 개체의 클래스리스트에 접근해 목록을 확인 할 수 있다.
+
+        박스.classList.add('new-class');
+        // 클래스 추가 
+        
+        박스.classList.remove('box');
+        // 클래스 제거
+
+        console.log(`박스에 .box가 포함되어 있나요? : ${박스.classList.contains('box')}`);
+        // contains() 기능은 개체 안에 클래스가 있는지 여부를 확인한다.
+        // return은 true | false 둘중 하나이며, html 구조를 바꾸지 않는다.
+        
+
+    </script>
+</body>
+</html>

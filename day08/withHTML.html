@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="box" id="id-box">
+        안녕하세요
+        
+        <div class="box" id="id-box">
+            안녕하세요
+        </div>
+    </div>
+
+    <script>
+        // document.getcl -> 클래스 자동완성
+        // document.getid -> 아이디 자동완성
+        // document.gettag -> 태그 자동완성
+
+        const 클래스박스 = document.getElementsByClassName('box') 
+        // 클래스는 항상 복수일 가능성이 있기때문에 html내에 클래스가 0개이던 100개이던
+        // 항상 HTML collection 형태로 가져오게 된다.
+        // 배열 사용과 동일하게 { 클래스박스[0] } 형태로 컬렉션 내의 컨텐츠를 사용 할 수 있다.
+        // 만약 클래스로 가져온 개체중 id를 가진 개체가 있다면 해당 id를 key값으로 사용할수 있다.
+        // { 클래스박스['id-box'] } <- 인덱스 대신 키값을 사용한 예
+
+        const 아이디박스 = document.getElementById('id-box')
+        // 반면 id는 항상 하나만 존재하기때문에 배열 같은 구조 없이 바로 컨텐츠를 가져올 수 있다.
+        
+        console.log(`클래스박스 :`)
+        console.log(클래스박스)
+        console.log(`아이디박스 :`)
+        console.log(아이디박스)
+
+        // document.qu -> 쿼리셀렉터 단축
+        const 쿼리셀렉터 = document.querySelector('.box')
+        // 쿼리셀렉터는 css 선택자와 동일한 작성으로 컨텐츠를 가져올수 있는 기능
+        // 문서를 위에서부터 읽어 가장 먼저 만나는 개체 하나만 가져 온다.
+        // 일반적으로 위 두 방식보다 안정성이 떨어지지만 진가는 ('.content > .box') 와 같은 형태에서 드러난다.
+
+        const 쿼리셀렉터활용 = document.querySelector('.box > .box');
+        // css 선택자와 완벽히 같은 방식으로 컨텐츠를 선택할 수 있기때문에 자유도가 높다.
+
+        // document.qua -> 쿼리셀렉터 올 단축
+        const 쿼리셀렉터올 = document.querySelectorAll('.box');
+        // 지정한 선택자에 해당하는 모든 개체를 가져오는 기능
+        // NodeList(노드의 배열) 형태로 만들어진다.
+
+        
+    </script>
+</body>
+</html>
