@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Scope : 시야, 범위
+
+    개발에서는 변수나 함수가 어떤 위치까지 접근할수 있는지가 굉장히 중요하다.
+    <script>
+        if(true) {
+            const 지갑 = 1000000;
+        }
+
+        // console.log(지갑);
+
+        function 함수함수() {
+            let 이재용지갑 = 99999999999;
+            console.log(이재용지갑)
+        }
+
+        함수함수();
+
+        // 스코프 밖에서는 접근이 불가능해 자연스럽게 보안성이 올라간다.
+
+        // 모든 스코프에서 접근 가능한 전역변수
+        let 손흥민;
+
+        // 아래 i는 반복문 내에서만 사용되는 지역변수
+        for(let i = 0 ; i < 10 ; i ++) {
+            
+        }
+        for(let i = 0 ; i < 10 ; i ++) {
+            
+        }
+        for(let i = 0 ; i < 10 ; i ++) {
+            
+        }
+
+
+    </script>
+</body>
+</html>

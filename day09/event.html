@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="my-button">
+        인사    
+    </button>
+
+    <script>
+        // event : 사건
+        // 사용자가 웹을 이용하면서 발생하는 모든것이 event
+
+        // ex 마우스를 움직이는것, 키보드를 누르는것, 페이지를 열거나 브라우저 크기를 바꾸는것
+
+        // 내가 원하는 이벤트에 원하는 코드를 작동하게끔 해줄수 있다.
+
+        const 인사버튼 = document.getElementById('my-button');
+
+        // 인사버튼.addEventListener('click', 인사하기)
+
+        console.log(인사버튼)
+
+
+        // 내용이 간단하고 함수 재사용이 없는경우
+        // ()=>{} 형태의 화살표함수(ES6에서 나온 익명함수 진화버전)
+        // 를 이용하면 간결하게 작성할 수 있다.
+        인사버튼.addEventListener('click',()=>{
+            alert('안녕하세요')
+        })
+    
+        // 일반함수는 계속해서 메모리를 차지하고있다.
+        // 한번만 사용할 함수라면 익명함수로 선언해 메모리를 아껴줄 수 있다.
+
+        function 인사하기() {
+            alert('안녕하세요')
+        }
+
+        //day04 실습예제
+        function 구구단출력() {
+            for(let dan = 2 ; dan <= 9 ; dan ++){
+            document.write(`<h2>${dan}단</h2>`)
+            for(let i = 1 ; i <= 9; i++){
+                document.write(`${dan} x ${i} = ${dan*i}`)
+                document.write('<br>')
+            }
+        }
+        }
+    </script>
+</body>
+</html>

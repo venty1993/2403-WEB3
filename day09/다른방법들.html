@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- html 태그의 onclick 속성에 함수를 지정하는 방식 -->
+    <!-- 보안성이 거의 0에 수렴하는 나쁜 방식이다.. -->
+    <button onclick="인사하기()">인사</button>
+
+    <button id="my-button">
+        인사인사
+    </button>
+
+    <script>
+        
+        const 홍길동 = {
+            키 : 250,
+            몸무게 : 20
+        }
+
+        console.log(홍길동.키);
+
+        홍길동.키 = 500
+
+        console.log(홍길동.키);
+
+        묶음();
+        function 묶음(){
+
+            const 인사버튼 = document.getElementById('my-button');
+            
+            // js로 가져온 html 객체의 onclick 프로퍼티에 함수를 지정해주는 방식
+            인사버튼.onclick = 인사하기;
+            // 위처럼 작성하면 addEventListener처럼 스코프에 알맞는 함수에 접근 할 수 있다.
+            // 하지만 프로퍼티 특성상 하나의 함수만 연결해줄수 있어 자유도가 떨어진다.
+            
+            
+            function 인사하기() {
+                alert('안녕');
+            }
+        }
+    </script>
+</body>
+</html>
