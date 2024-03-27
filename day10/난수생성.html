@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 수학적 기능과 수치들이 담겨있는 내장 객체 Math
+        
+        Math.random()
+
+        // 0이상 1 미만의 실수를 반환 해준다.
+
+        for(let i = 0 ; i < 5 ; i ++) 
+            console.log(Math.random());
+
+        // 값을 확인해보면 0~0.99999... 범위에서 출력된다.
+
+        // 1~100 까지는 100개의 숫자가 있다.
+        // 곧 범위가 100이라는 뜻인데,
+        // 0~99 역시 100개의 숫자, 범위가 100이다.
+
+        // 0~99 +1   =  1~100
+
+        const 범위 = 100;
+        const 시작값 = 1;
+
+        Math.random()*범위+시작값 
+        // 1부터 100.9999999..까지 난수 생성
+
+
+        // 0부터 99.99999... + 1
+        // 1부터 100.99999...
+        const 실수 = 1.912
+        console.log(`내림한 실수:${Math.floor(실수)}`)
+        // Math.floor()는 괄호 안에 들어간 숫자를 내림처리 해준다.
+
+        const 난수 = Math.floor(Math.random()*범위+시작값);
+
+        console.log(`생성한 난수 : ${난수}`)
+
+
+
+
+    
+    </script>
+</body>
+</html>

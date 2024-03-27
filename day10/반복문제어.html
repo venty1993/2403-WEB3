@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 3의 배수 이외의 모든 숫자를 출력하는 조건문을 작성 해봅시다!
+        for(let i = 0 ; i < 10 ; i ++) {
+            if(i % 3 !== 0 ){
+                console.log(i)
+            }
+        }
+
+        // 출력값 : 0 1 2 4 5 7 8
+
+        for(let i = 0 ; i < 10 ; i ++) {
+            if(i % 3 === 0 ){
+                continue;                
+            }
+
+            console.log(i)
+        }
+
+        // continue문은 반목문의 해당 회차를 즉시 종료하고
+        // 다음 회차를 시행시킨다.
+
+
+
+        // break문은 반복문을 즉시 종료시킨다
+        for(let i = 1 ; i < 10 ; i ++) {
+            console.log(i);
+            if(i % 3 === 0) {
+                console.log('3의 배수를 말해서 죽어버렸다')
+                break;
+            }
+        }
+
+        // 횟수가 없는 반복문을 만들때
+        // for(let i = 0 ; i < 10 ; i--)와 같은식으로 만들수도 있긴 한데..
+        while(true){
+            if('특정조건') {
+                break;
+            }
+        }
+
+
+
+        let i = 0 ;
+        while(i<10) {
+            console.log(i)
+
+            i++;
+        }
+
+    </script>
+</body>
+</html>
