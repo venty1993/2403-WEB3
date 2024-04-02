@@ -47,14 +47,19 @@
             <li class="content">2</li>
             <li class="content">3</li>
             <li class="content">4</li>
+            <li class="content">5</li>
+            <li class="content">6</li>
         </ul>
     </div>
     <button id="prev">이전</button>
     <button id="next">다음</button>
     <script>
 
-        // 다음버튼을 누를때 슬라이드가 
-        // 다음장으로 넘어가게 만들어봅시다!
+        // 이전, 혹은 다음 버튼을 누를 때
+        // index가 범위 밖으로 나가는것을 제한 해봅시다
+        // 예를들어, 현재 슬라이드가 0번부터 3번까지 있는데
+        // 0번에서 이전을 누르면 -1로 가는게 아니라 0으로 계속 유지되고
+        // 3번에서 다음을 누르면 4로 가는게 아니라 3으로 계속 유지되게
 
         const slide = document.querySelector('.contents-wrapper')
         const prev = document.getElementById('prev');
@@ -62,14 +67,24 @@
         
         let index = 0;
         
+        // 배열의 프로퍼티중 length는 배열의 길이를 나타낸다
+        // 이와 비슷하게 html요소의 자식 갯수를 파악할 수 있는 프로퍼티는 다음과 같다.
+        console.log(slide.childElementCount)
+
+
+
         next.addEventListener('click', () => {
+            if(index !== slide.childElementCount-1){
+                index++;
+            }
             // index = index - 300;
-            index++;
             위치적용();
         })
         
         prev.addEventListener('click', () => {
-            index--;
+            if(index !== 0) {
+                index--;
+            }
             위치적용();
         })
 
