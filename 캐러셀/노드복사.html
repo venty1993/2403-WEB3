@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .copy-target {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #222;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    <div class="copy-target">
+        컨텐츠
+    </div>
+
+    <script>
+
+        const target = document.querySelector('.copy-target');
+        // 복사할요소.cloneNode(true)를 통해 개체를 복사 할 수 있다.
+        const copy = target.cloneNode(true)
+        // 넣을곳.appendChild(대상)은 대상을 넣을곳의 마지막 자식 요소로 추가
+        document.body.appendChild(copy)
+
+        const copy2 = target.cloneNode(true)
+        // 넣을곳.insetBefore(대상, 자식요소)는 대상을 넣을곳에 넣되, '자식요소' 앞에 삽입한다.
+        document.body.insertBefore(copy2,document.body.firstElementChild)
+    </script>
+</body>
+</html>

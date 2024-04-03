@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .slide-container {
+            width: 300px;
+            height: 200px;
+            border: 10px solid red;
+            overflow: hidden;
+        }
+
+        .contents-wrapper {
+            width: fit-content;
+            display: flex;
+            transform: translateX(0);
+            transition: 1s;
+        }
+
+        .content {
+            width: 300px;
+            height: 200px;
+            background-color: gray;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            flex-shrink: 0;
+        }
+
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+        }
+        .slide-button {
+            width: 20px;
+            height: 20px;
+            background-color: gray;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .slide-button.active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <ul class="contents-wrapper">
+            <li class="content 1">1</li>
+            <li class="content 2">2</li>
+            <li class="content 3">3</li>
+            <li class="content 3">4</li>
+            <li class="content 3">5</li>
+        </ul>
+    </div>
+    <button id="prev">이전</button>
+    <div class="button-container">
+
+    </div>
+    <button id="next">다음</button>
+    <script>
+        const viewCount = 3;
+        let moveCheck = false;
+        
+        const wrapper = document.querySelector('.contents-wrapper');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+        const buttonContainer = document.querySelector('.button-container')
+        
+        // wrapper의 첫번째 자식과 마지막 자식을 복사
+        const firstClone = []
+        const lastClone = []
+        for(let i = 0; i < viewCount ; i ++) {
+            firstClone.push(wrapper.children[i].cloneNode(true));
+            lastClone.push(wrapper.children[wrapper.childElementCount-1-i].cloneNode(true));
+            
+        }
+        for(let i = 0; i < viewCount ; i ++) {
+            // 복사본을 각각 알맞은 위치에 삽입하기
+            wrapper.appendChild(firstClone[i]);
+            wrapper.insertBefore(lastClone[i], wrapper.firstElementChild);
+        }
+
+
+        let index = viewCount;
+        위치적용(false);
+
+        next.addEventListener('click', ()=>{
+            if(!moveCheck){
+                moveCheck=true;
+
+                index++;
+                위치적용(true);
+
+                // wrapper.childElementCount - 1 - viewCount
+                // wrapper.childElementCount = wrapper 자식의 갯수
+                // 1을 빼준이유 : index는 갯수보다 1개 적기때문에
+                // viewCount를 빼준 이유 : 복사본이 맨 앞을 채우면서 복사본 갯수만큼 인덱스가 밀려나기 때문
+                // 자식갯수 11개 - 1 - viewcount 3개
+                //  7;
+
+                setTimeout(() => {
+                    if(index > wrapper.childElementCount - 1 - viewCount) {
+                        index = viewCount;
+                        위치적용(false);
+                    } 
+                    moveCheck=false;
+                }, 1000);
+            }
+            
+
+        })
+        prev.addEventListener('click', ()=>{
+            index--;
+            위치적용(true);
+            if(index < viewCount) {
+                setTimeout(() => {
+                    index = wrapper.childElementCount-1 -viewCount;
+                    위치적용(false);
+                    
+                }, 1000);
+            } 
+        })
+
+
+
+
+
+        function 위치적용(animation) {
+            if(animation){
+                wrapper.style.transition = `1s`
+            }else {
+                wrapper.style.transition = `none`
+            }
+
+            wrapper.style.transform = `translateX(-${index*300}px)`
+            console.log(index);
+        }
+
+        
+
+
+    </script>
+</body>
+</html>
+</body>
+</html>
