@@ -11,7 +11,7 @@
             margin: 0;
         }
         .slide-container {
-            width: 300px;
+            width: 1000px;
             height: 200px;
             border: 10px solid red;
             overflow: hidden;
@@ -80,7 +80,6 @@
         const next = document.getElementById('next');
         const buttonContainer = document.querySelector('.button-container')
 
-
         const slider = document.querySelector('.slide-container');
 
         // html개체의 위치, 크기등의 정보를 가져오는 메서드
@@ -88,17 +87,13 @@
         // html 개체의 컨텐츠 크기(보더등은 제외함)
         console.log(slider.clientWidth)
 
-        const contentsWidth = (slider.clientWidth - gap) / viewCount
-
+        const contentsWidth = (slider.clientWidth - gap * (viewCount-1)) / viewCount
 
         wrapper.style.gap = `${gap}px`
         for(let i = 0 ; i < wrapper.childElementCount ; i ++) {
             wrapper.children[i].style.width = `${contentsWidth}px`
         }
-
-
-
-        
+    
         const firstClone = []
         const lastClone = []
         for(let i = 0; i < viewCount ; i ++) {
@@ -151,10 +146,6 @@
             }
         })
 
-
-
-
-
         function 위치적용(animation) {
             if(animation){
                 wrapper.style.transition = `1s`
@@ -165,9 +156,6 @@
             wrapper.style.transform = `translateX(-${index* (contentsWidth + gap)}px)`
             console.log(index);
         }
-
-        
-
 
     </script>
 </body>
