@@ -10,6 +10,16 @@
             padding: 0;
             margin: 0;
         }
+
+        section {
+            padding: 0 32px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+
+        }
         .slide-container {
             width: 100%;
             height: 200px;
@@ -56,23 +66,27 @@
     </style>
 </head>
 <body>
-    
-    <div class="slide-container">
-        <ul class="contents-wrapper">
-            <li class="content">1</li>
-            <li class="content">2</li>
-            <li class="content">3</li>
-            <li class="content">4</li>
-            <li class="content">5</li>
-        </ul>
-    </div>
-    <button id="prev">이전</button>
-    <div class="button-container">
+    <section>
+        <div class="section-container">
 
-    </div>
-    <button id="next">다음</button>
+            <div class="slide-container">
+                <ul class="contents-wrapper">
+                    <li class="content">1</li>
+                    <li class="content">2</li>
+                <li class="content">3</li>
+                <li class="content">4</li>
+                <li class="content">5</li>
+            </ul>
+            </div>
+            <button id="prev">이전</button>
+            <div class="button-container">
+                
+            </div>
+            <button id="next">다음</button>
+        </div>
+    </section>
     <script>
-        const viewCount = 2;
+        const viewCount = 3;
         const gap = 8;
         let 움직이는중 = false;
         
@@ -90,10 +104,13 @@
         let contentsWidth
 
         let index = viewCount;
+        라디오버튼생성();
         컨텐츠크기반영();
         
-
         
+
+
+
     
         const firstClone = []
         const lastClone = []
@@ -107,6 +124,8 @@
             wrapper.appendChild(firstClone[i]);
             wrapper.insertBefore(lastClone[i], wrapper.firstElementChild);
         }
+
+
 
 
         
@@ -156,6 +175,20 @@
                 wrapper.style.transition = `none`
             }
 
+            버튼초기화();
+
+            console.log(wrapper.childElementCount - 1 - viewCount)
+            console.log(viewCount);
+            console.log(index)
+            
+            if(index === wrapper.childElementCount - 1 - viewCount) {
+                buttonContainer.firstElementChild.classList.add('active')
+            }else if(index < viewCount){
+                buttonContainer.lastElementChild.classList.add('active')
+            }else {
+                buttonContainer.children[index-viewCount].classList.add('active');
+            }
+    
             wrapper.style.transform = `translateX(-${index* (contentsWidth + gap)}px)`
             console.log(index);
         }
@@ -170,6 +203,29 @@
 
             위치적용(false);
         }
+
+        function 버튼초기화() {
+            for(let j = 0 ; j < buttonContainer.childElementCount ; j ++) {
+                    buttonContainer.children[j].classList.remove('active');
+            }
+        }
+
+        function 라디오버튼생성(){
+            for(let i = 0 ; i < wrapper.childElementCount + 1 - viewCount ; i++) {
+
+                const button = document.createElement('div');
+
+                button.classList.add('slide-button');
+
+                buttonContainer.appendChild(button);
+
+                button.addEventListener('click', ()=>{
+                    index = i+viewCount;
+                    위치적용(true);
+                })
+            }
+        }
+
 
     </script>
 </body>
