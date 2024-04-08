@@ -11,10 +11,11 @@
             margin: 0;
         }
         .slide-container {
-            width: 1000px;
+            width: 100%;
             height: 200px;
             border: 10px solid red;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         .contents-wrapper {
@@ -58,11 +59,11 @@
 
     <div class="slide-container">
         <ul class="contents-wrapper">
-            <li class="content 1">1</li>
-            <li class="content 2">2</li>
-            <li class="content 3">3</li>
-            <li class="content 3">4</li>
-            <li class="content 3">5</li>
+            <li class="content">1</li>
+            <li class="content">2</li>
+            <li class="content">3</li>
+            <li class="content">4</li>
+            <li class="content">5</li>
         </ul>
     </div>
     <button id="prev">이전</button>
@@ -71,9 +72,9 @@
     </div>
     <button id="next">다음</button>
     <script>
-        const viewCount = 5;
+        const viewCount = 2;
         const gap = 8;
-        let moveCheck = false;
+        let 움직이는중 = false;
         
         const wrapper = document.querySelector('.contents-wrapper');
         const prev = document.getElementById('prev');
@@ -86,13 +87,13 @@
         console.log(slider.getBoundingClientRect().width)
         // html 개체의 컨텐츠 크기(보더등은 제외함)
         console.log(slider.clientWidth)
+        let contentsWidth
 
-        const contentsWidth = (slider.clientWidth - gap * (viewCount-1)) / viewCount
+        let index = viewCount;
+        컨텐츠크기반영();
+        
 
-        wrapper.style.gap = `${gap}px`
-        for(let i = 0 ; i < wrapper.childElementCount ; i ++) {
-            wrapper.children[i].style.width = `${contentsWidth}px`
-        }
+        
     
         const firstClone = []
         const lastClone = []
@@ -108,30 +109,29 @@
         }
 
 
-        let index = viewCount;
-        위치적용(false);
+        
 
         next.addEventListener('click', ()=>{
-            if(!moveCheck){
-                moveCheck=true;
-
+            if(!움직이는중){
                 index++;
                 위치적용(true);
+
+                움직이는중=true;
                 
                 setTimeout(() => {
+                    움직이는중=false;
                     if(index > wrapper.childElementCount - 1 - viewCount) {
                         index = viewCount;
                         위치적용(false);
                     } 
-                    moveCheck=false;
                 }, 1000);
             }
 
 
         })
         prev.addEventListener('click', ()=>{
-            if(!moveCheck){
-                moveCheck = true;
+            if(!움직이는중){
+                움직이는중 = true;
                 
                 index--;
                 위치적용(true);
@@ -141,10 +141,13 @@
                         index = wrapper.childElementCount-1 -viewCount;
                         위치적용(false);  
                     } 
-                    moveCheck = false;
+                    움직이는중 = false;
                 }, 1000);
             }
         })
+
+        window.addEventListener('resize', 컨텐츠크기반영)
+
 
         function 위치적용(animation) {
             if(animation){
@@ -155,6 +158,17 @@
 
             wrapper.style.transform = `translateX(-${index* (contentsWidth + gap)}px)`
             console.log(index);
+        }
+
+        function 컨텐츠크기반영(){
+            contentsWidth = (slider.clientWidth - gap * (viewCount-1)) / viewCount
+            
+            wrapper.style.gap = `${gap}px`
+            for(let i = 0 ; i < wrapper.childElementCount ; i ++) {
+                wrapper.children[i].style.width = `${contentsWidth}px`
+            }
+
+            위치적용(false);
         }
 
     </script>
