@@ -20,15 +20,22 @@
             margin: 0 auto;
 
         }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 700px;
+        }
+
         .slide-container {
             width: 100%;
-            height: 200px;
-            border: 10px solid red;
+            height: 100%;
             overflow: hidden;
             box-sizing: border-box;
         }
 
         .contents-wrapper {
+            height: 100%;
             width: fit-content;
             display: flex;
             transform: translateX(0);
@@ -36,7 +43,7 @@
         }
 
         .content {
-            height: 200px;
+            height: 100%;
             background-color: gray;
             color: white;
             display: flex;
@@ -44,20 +51,49 @@
             justify-content: center;
             font-size: 50px;
             flex-shrink: 0;
+            border: 1px solid ;
         }
 
+
+        .slider-interface {
+            width: 100%;
+            height: 100%;
+            position:absolute;
+            top: 0;
+        }
+
+        .prev {
+            position: absolute;
+            top: 50%;
+            left: -40px;
+            transform: translateY(-50%);
+        }
+
+        .next {
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            transform: translateY(-50%);
+        }
 
         .button-container {
             display: flex;
             justify-content: space-between;
             width: 200px;
+
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -40px;
         }
+
         .slide-button {
             width: 20px;
             height: 20px;
-            background-color: gray;
+            background-color: white;
             border-radius: 50%;
             cursor: pointer;
+            border: 1px solid #ccc;
         }
 
         .slide-button.active {
@@ -68,68 +104,45 @@
 <body>
     <section>
         <div class="section-container">
-
-            <div class="slide-container">
-                <ul class="contents-wrapper">
-                    <li class="content">1</li>
-                    <li class="content">2</li>
-                <li class="content">3</li>
-                <li class="content">4</li>
-                <li class="content">5</li>
-            </ul>
+            <div class="slider">
+                <div class="slide-container">
+                    <ul class="contents-wrapper">
+                        <li class="content">1</li>
+                        <li class="content">2</li>
+                        <li class="content">3</li>
+                        <li class="content">4</li>
+                        <li class="content">5</li>
+                    </ul>
+                </div>
+                <div class="slider-interface">
+                    <button class="prev">이전</button>
+                    <div class="button-container">
+                        
+                    </div>
+                    <button class="next">다음</button>
+                </div>
             </div>
-            <button id="prev">이전</button>
-            <div class="button-container">
-                
-            </div>
-            <button id="next">다음</button>
         </div>
     </section>
     <script>
-        const viewCount = 3;
-        const gap = 8;
-        let 움직이는중 = false;
-        
         const wrapper = document.querySelector('.contents-wrapper');
-        const prev = document.getElementById('prev');
-        const next = document.getElementById('next');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
         const buttonContainer = document.querySelector('.button-container')
-
         const slider = document.querySelector('.slide-container');
 
-        // html개체의 위치, 크기등의 정보를 가져오는 메서드
-        console.log(slider.getBoundingClientRect().width)
-        // html 개체의 컨텐츠 크기(보더등은 제외함)
-        console.log(slider.clientWidth)
-        let contentsWidth
+        const viewCount = 3;
+        const gap = 8;
 
+        let 움직이는중 = false;
+        let contentsWidth
         let index = viewCount;
+        
+        
         라디오버튼생성();
         컨텐츠크기반영();
+        클론생성();
         
-        
-
-
-
-    
-        const firstClone = []
-        const lastClone = []
-        for(let i = 0; i < viewCount ; i ++) {
-            firstClone.push(wrapper.children[i].cloneNode(true));
-            lastClone.push(wrapper.children[wrapper.childElementCount-1-i].cloneNode(true));
-            
-        }
-        for(let i = 0; i < viewCount ; i ++) {
-    
-            wrapper.appendChild(firstClone[i]);
-            wrapper.insertBefore(lastClone[i], wrapper.firstElementChild);
-        }
-
-
-
-
-        
-
         next.addEventListener('click', ()=>{
             if(!움직이는중){
                 index++;
@@ -139,15 +152,15 @@
                 
                 setTimeout(() => {
                     움직이는중=false;
+                    console.log(wrapper.childElementCount - 1 - viewCount)
                     if(index > wrapper.childElementCount - 1 - viewCount) {
                         index = viewCount;
                         위치적용(false);
                     } 
                 }, 1000);
             }
-
-
         })
+
         prev.addEventListener('click', ()=>{
             if(!움직이는중){
                 움직이는중 = true;
@@ -167,6 +180,21 @@
 
         window.addEventListener('resize', 컨텐츠크기반영)
 
+        function 클론생성() {
+        
+        const firstClone = []
+        const lastClone = []
+        for(let i = 0; i < viewCount ; i ++) {
+            firstClone.push(wrapper.children[i].cloneNode(true));
+            lastClone.push(wrapper.children[wrapper.childElementCount-1-i].cloneNode(true));
+            
+        }
+        for(let i = 0; i < viewCount ; i ++) {
+            
+            wrapper.appendChild(firstClone[i]);
+            wrapper.insertBefore(lastClone[i], wrapper.firstElementChild);
+        }
+    }
 
         function 위치적용(animation) {
             if(animation){
@@ -176,12 +204,8 @@
             }
 
             버튼초기화();
-
-            console.log(wrapper.childElementCount - 1 - viewCount)
-            console.log(viewCount);
-            console.log(index)
             
-            if(index === wrapper.childElementCount - 1 - viewCount) {
+            if(index > wrapper.childElementCount - 1 - viewCount) {
                 buttonContainer.firstElementChild.classList.add('active')
             }else if(index < viewCount){
                 buttonContainer.lastElementChild.classList.add('active')
@@ -190,7 +214,6 @@
             }
     
             wrapper.style.transform = `translateX(-${index* (contentsWidth + gap)}px)`
-            console.log(index);
         }
 
         function 컨텐츠크기반영(){
@@ -211,7 +234,7 @@
         }
 
         function 라디오버튼생성(){
-            for(let i = 0 ; i < wrapper.childElementCount + 1 - viewCount ; i++) {
+            for(let i = 0 ; i < wrapper.childElementCount ; i++) {
 
                 const button = document.createElement('div');
 
